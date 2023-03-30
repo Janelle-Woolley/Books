@@ -1,5 +1,4 @@
 import ecs100.*;
-
 /**
  * Class to handle GUI functios
  *
@@ -41,6 +40,6 @@ public class GUI
         
         
         String imgFileName = UIFileChooser.open("Choose Image File: ");
-        Library.addBook(title, author, quantity, imgFileName);
+        books.addBook(title, author, quantity, imgFileName);
     }
 }

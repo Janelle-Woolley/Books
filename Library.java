@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import ecs100.*;
 /**
  * holds collection in hashmap
  * allows user to add books to a hashmap
@@ -10,8 +11,8 @@ import java.util.HashMap;
 public class Library
 {
     // instance variables - replace the example below with your own
-    private static HashMap<Integer, Book> bookShelf; // declear the hashmap   
-    private static int currentId;  // store the current id of the book
+    private HashMap<Integer, Book> bookShelf; // declear the hashmap   
+    private int currentId;  // store the current id of the book
     /**
      * Constructor for objects of class Library
      */
@@ -32,7 +33,7 @@ public class Library
         this.currentId = 3;
     }
     
-    public static void addBook(String nm, String auth, int qty, String img){
+    public void addBook(String nm, String auth, int qty, String img){
         currentId++;
         bookShelf.put(currentId, new Book(nm, auth, qty, img));
     }
