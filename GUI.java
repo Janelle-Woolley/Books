@@ -19,10 +19,11 @@ public class GUI
         books = new Library();
         UI.initialise();
         UI.addButton("Quit", UI::quit);
-        UI.addButton("Add Book", this::addBookGUI);
+        UI.addButton("Add Book", this::addBook);
+        UI.addButton("Find Book", this::findBook);
     }
 
-    public void addBookGUI(){
+    public void addBook(){
         final int MAX_QUANTITY = 999;
         
         String title = UI.askString("Enter the book title: ");
