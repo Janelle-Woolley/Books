@@ -26,6 +26,7 @@ public class GUI
 
     public void addBook(){
         final int MAX_QUANTITY = 999;
+        final int MIN_QUANTITY = 0;
         
         String title = UI.askString("Enter the book title: ");
         String author = UI.askString("Enter the author: ");
@@ -33,8 +34,8 @@ public class GUI
         boolean getQty = true;
         int quantity = UI.askInt("Enter Quantity: ");
         while (getQty){
-            if (quantity > MAX_QUANTITY){
-                quantity = UI.askInt("Enter Quantity: ");
+            if (quantity > MAX_QUANTITY || quantity < MIN_QUANTITY){
+                quantity = UI.askInt("Enter Quantity (Between 1-999): ");
             } else{
                 getQty = false;
             }
