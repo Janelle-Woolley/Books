@@ -13,6 +13,8 @@ public class Library
     // instance variables - replace the example below with your own
     private HashMap<Integer, Book> bookShelf; // declear the hashmap   
     private int currentId;  // store the current id of the book
+    private Book currBook;  // store the instance of the found book
+    
     /**
      * Constructor for objects of class Library
      */
@@ -48,9 +50,19 @@ public class Library
     public boolean findBook(String name) {
         for (int bookId : bookShelf.keySet()) {
             if (bookShelf.get(bookId).getName().equals(name)){
+                currBook = bookShelf.get(bookId);
                 return true;
             }
         }
         return false; // if not found
     }
+    
+    /**
+     * getter for current book
+     * @return the found book instance
+     */
+    public Book getBook(){
+        return this.currBook;
+    }
+    
 }

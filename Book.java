@@ -1,4 +1,4 @@
-
+import ecs100.*;
 /**
  * Support class for library
  * Creates books
@@ -47,5 +47,33 @@ public class Book
      */
     public String getName(){
         return this.title;
+    }
+    
+    /**
+     * Display image on GUI
+     */
+    public void displayBook(){
+        int locX = 100;
+        int locY = 100;
+        final double WIDTH = 100;
+        final double HEIGHT = 100;
+        
+        UI.drawImage(this.image, locX, locY, WIDTH, HEIGHT);
+    }
+    
+    /**
+     * Getter for author
+     * @return the author of book
+     */
+    public String getAuthor(){
+        return this.author;
+    }
+    
+    /**
+     * Getter for Quantity
+     * @return the Quantity of book
+     */
+    public int getQuantity(){
+        return this.quantity;
     }
 }

@@ -9,6 +9,7 @@ public class GUI
 {
     // instance variables - replace the example below with your own
     private Library books;
+    private Book book; // stores the current book instance
 
     /**
      * Constructor for objects of class GUI
@@ -52,6 +53,10 @@ public class GUI
         String bookName = UI.askString("Name of book: ");
         if(books.findBook(bookName)){
             UI.println("Found book!");
+            book = books.getBook();
+            UI.println("Author: " + book.getAuthor());
+            UI.println("Quantity: " + book.getQuantity());
+            book.displayBook(); // Shows book cover
         } else {
             UI.println("Book not Found");
         }
