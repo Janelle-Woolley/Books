@@ -33,8 +33,24 @@ public class Library
         this.currentId = 3;
     }
     
+    /**
+     * adds book to hashmap
+     */
     public void addBook(String nm, String auth, int qty, String img){
         currentId++;
         bookShelf.put(currentId, new Book(nm, auth, qty, img));
+    }
+    
+    /**
+     * looks for book in hashmap
+     * @return boolean if found
+     */
+    public boolean findBook(String name) {
+        for (int bookId : bookShelf.keySet()) {
+            if (bookShelf.get(bookId).getName().equals(name)){
+                return true;
+            }
+        }
+        return false; // if not found
     }
 }
