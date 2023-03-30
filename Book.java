@@ -9,33 +9,35 @@
 public class Book
 {
     // instance variables - replace the example below with your own
-    private int id;
     private String title;
     private String author;
-    private int publishedDate;
-    private int pages;
-    private String genre;
+    private int quantity;
     private String image;
-    
+    private static final String DEFAULT = "default_book.jpg";
     /**
      * Constructor for objects of class Book
      */
-    public Book(int id, String name, String auth, int published, int pg, String type, String img)
+    public Book(String name, String auth, int qty, String img)
     {
         // initialise instance variables
-        this.id = id;
         this.title = name;
         this.author = auth;
-        this.publishedDate = published;
-        this.pages = pg;
-        this.genre = type;
-        this.image = img;
+        this.quantity = qty;
+        
+        // if the user selects cancel instead of giving image
+        if (img == null){
+            this.image = DEFAULT;
+        } else {
+            this.image = img;
+        }
     }
-
+    
     /**
-     * converts this.Book to a string so it can be printed
+     * Constructor overloading for objects of class Book
      */
-    public String toString(){
-        return ("Title: " + title + " Author: " + author + " Published: " + publishedDate + " Pages: " + pages + " Genre: " + genre);
+    public Book(String name, String auth, int qty)
+    {
+        // initialise instance variables
+        this(name, auth, qty, null);
     }
 }

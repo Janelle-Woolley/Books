@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import ecs100.*;
 /**
  * holds collection in hashmap
  * allows user to add books to a hashmap
@@ -11,40 +10,30 @@ import ecs100.*;
 public class Library
 {
     // instance variables - replace the example below with your own
-    private HashMap<String, Book> bookShelf;
-    private final int MAXBOOKS = 3;    
-    private int id = 0;
+    private static HashMap<Integer, Book> bookShelf; // declear the hashmap   
+    private static int currentId;  // store the current id of the book
     /**
      * Constructor for objects of class Library
      */
     public Library()
     {
         // initialise instance variables
-        bookShelf = new HashMap<String, Book>();
+        bookShelf = new HashMap<Integer, Book>(); // intailise the hashmap
         
-        UI.addButton("Quit", UI::quit);
-        UI.addButton("Add Book", this::addValues);
-        UI.addButton("Print Books", this::printValues);
-    }
-
-    public void addValues(){
-        id++;
-        String title, author, genre;
-        int pages;
-        title = UI.askString("Enter the book title: ");
-        author = UI.askString("Enter the author: ");
-        int published = UI.askInt("Enter date published: ");
-        pages = UI.askInt("Enter the page count: ");
-        genre = UI.askString("Enter genre: ");
-        image =;
+        // create default books
+        Book b1 = new Book("Cellphone", "Steven King", 44);
+        Book b2 = new Book("Pet Cemetry", "Steven King", 31);
+        Book b3 = new Book("1984", "Gorge Orwell", 22);
         
-        Book book1 = new Book(id, title, author, published, pages, genre, image);
-        bookShelf.put(title, book1);
+        bookShelf.put(1, b1);
+        bookShelf.put(2, b2);
+        bookShelf.put(3, b3);
+        
+        this.currentId = 3;
     }
     
-    public void printValues(){
-        for (String title : bookShelf.keySet()){
-            UI.println(bookShelf.get(title));
-        }
+    public static void addBook(String nm, String auth, int qty, String img){
+        currentId++;
+        bookShelf.put(currentId, new Book(nm, auth, qty, img));
     }
 }
