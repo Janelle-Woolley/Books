@@ -41,7 +41,6 @@ public class GUI
             }
         }
         
-        
         String imgFileName = UIFileChooser.open("Choose Image File: ");
         books.addBook(title, author, quantity, imgFileName);
     }
@@ -52,7 +51,7 @@ public class GUI
      */
     public void findBook(){
         String bookName = UI.askString("Name of book: ");
-        if(books.findBook(bookName)){
+        if(books.findBook(bookName.toLowerCase())){
             UI.println("Found book!");
             book = books.getBook();
             UI.println("Author: " + book.getAuthor());
