@@ -13,7 +13,13 @@ public class Book
     private String author;
     private int quantity;
     private String image;
-    private static final String DEFAULT = "default_book.jpg";
+    private static final String DEFAULT = "book_cover.jpg";
+    
+    private int locX = 100;
+    private int locY = 100;
+    private final double WIDTH = 100;
+    private final double HEIGHT = 100;
+        
     /**
      * Constructor for objects of class Book
      */
@@ -53,12 +59,7 @@ public class Book
      * Display image on GUI
      */
     public void displayBook(){
-        int locX = 100;
-        int locY = 100;
-        final double WIDTH = 100;
-        final double HEIGHT = 100;
-        
-        UI.drawImage(this.image, locX, locY, WIDTH, HEIGHT);
+        UI.drawImage(this.image, this.locX, this.locY, this.WIDTH, this.HEIGHT);
     }
     
     /**
@@ -75,5 +76,24 @@ public class Book
      */
     public int getQuantity(){
         return this.quantity;
+    }
+    
+    /**
+     * Getter for author
+     * @return the author of book
+     */
+    public String getTitle(){
+        return this.title;
+    }
+    
+    /**
+     * sees if x, y pos is on the book image
+     */
+    public boolean onBook(double x, double y){
+        if((x>=locX) && (x<=locX+WIDTH) && (y>=locY) && (y<=locY+HEIGHT)){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

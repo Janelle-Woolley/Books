@@ -58,6 +58,20 @@ public class Library
     }
     
     /**
+     * loops through hashmap and prints out books
+     */
+    public void printAll() {
+        for (int bookId : bookShelf.keySet()) {
+            currBook = bookShelf.get(bookId);
+            UI.println("---------------------");
+            UI.println("Title: " + currBook.getTitle());
+            UI.println("Author: " + currBook.getAuthor());
+            UI.println("Quantity: " + currBook.getQuantity());
+            UI.println("---------------------");
+        }
+    }
+    
+    /**
      * getter for current book
      * @return the found book instance
      */
@@ -65,4 +79,14 @@ public class Library
         return this.currBook;
     }
     
+    /**
+     * 
+     */
+    public void removeBook(String name){
+        for (int bookId : bookShelf.keySet()) {
+            if (bookShelf.get(bookId).getName().toLowerCase().equals(name)){
+                bookShelf.remove(bookId);
+            }
+        }
+    }
 }
