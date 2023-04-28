@@ -49,7 +49,7 @@ public class Library
      */
     public boolean findBook(String name) {
         for (int bookId : bookShelf.keySet()) {
-            if (bookShelf.get(bookId).getName().toLowerCase().equals(name)){
+            if (bookShelf.get(bookId).getTitle().toLowerCase().equals(name)){
                 currBook = bookShelf.get(bookId);
                 return true;
             }
@@ -84,7 +84,7 @@ public class Library
      */
     public void removeBook(String name){
         for (int bookId : bookShelf.keySet()) {
-            if (bookShelf.get(bookId).getName().toLowerCase().equals(name)){
+            if (bookShelf.get(bookId).getTitle().toLowerCase().equals(name)){
                 bookShelf.remove(bookId);
             }
         }

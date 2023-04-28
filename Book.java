@@ -46,15 +46,7 @@ public class Book
         // initialise instance variables
         this(name, auth, qty, null);
     }
-    
-    /**
-     * Getter for name
-     * @return the name of book
-     */
-    public String getName(){
-        return this.title;
-    }
-    
+
     /**
      * Display image on GUI
      */
@@ -84,6 +76,14 @@ public class Book
      */
     public String getTitle(){
         return this.title;
+    }
+    
+    /**
+     * Getter for book cover
+     * @return the image of book
+     */
+    public String getImage(){
+        return this.image;
     }
     
     /**

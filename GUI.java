@@ -1,4 +1,5 @@
 import ecs100.*;
+import java.util.Scanner;
 /**
  * Class to handle GUI functios
  *
@@ -23,7 +24,8 @@ public class GUI
         UI.addButton("Add Book", this::addBook);
         UI.addButton("Remove Book", this::deleteBook);
         UI.addButton("Find Book", this::findBook);
-        UI.addButton("Print Books", this::printBooks);
+        UI.addButton("Print Books Info", this::printBooks);
+        UI.addButton("Edit Quantity", this::editQuantity);
         UI.addButton("Clear", this::clearAll);
         
         UI.setMouseListener(this::doMouse);
@@ -42,8 +44,26 @@ public class GUI
         final int MAX_QUANTITY = 999;
         final int MIN_QUANTITY = 0;
         
+        boolean getTitle = true;
         String title = UI.askString("Enter the book title: ");
+        while(getTitle){
+            if(title.equals("")){
+                title = UI.askString("Enter the book title: ");
+            } else{
+                getTitle = false;
+            }
+        }
+        
+        boolean getAuthor = true;
         String author = UI.askString("Enter the author: ");
+        while(getAuthor){
+            if(author.equals("")){
+                author = UI.askString("Enter the author: ");
+            } else{
+                getAuthor = false;
+            }
+        }
+        
         
         boolean getQty = true;
         int quantity = UI.askInt("Enter Quantity: ");
@@ -55,6 +75,7 @@ public class GUI
             }
         }
         
+        UI.println("Select a book cover");
         String imgFileName = UIFileChooser.open("Choose Image File: ");
         books.addBook(title, author, quantity, imgFileName);
     }
@@ -108,6 +129,44 @@ public class GUI
             book = books.getBook();
             books.removeBook(bookName);
             UI.println("Book Burnt!");
+        } else {
+            UI.println("Book not Found");
+        }
+    }
+    
+    /**
+     * 
+     */
+    public void editQuantity(){
+        String bookName = UI.askString("Name of book to edit quantity: ");
+        if(books.findBook(bookName.toLowerCase())){
+            UI.println("Found book!");
+            book = books.getBook();
+            
+            // ask for new quantity
+            final int MAX_QUANTITY = 999;
+            final int MIN_QUANTITY = 0;
+            boolean getQty = true;
+            int quantity = UI.askInt("Enter Quantity: ");
+            while (getQty){
+                if (quantity > MAX_QUANTITY || quantity < MIN_QUANTITY){
+                    quantity = UI.askInt("Enter Quantity (Between 1-999): ");
+                } else if (quantity == book.getQuantity()){
+                    UI.println("That is the old quantity");
+                    quantity = UI.askInt("Enter a NEW Quantity: ");
+                } else{
+                    getQty = false;
+                }
+            }
+            
+            // get book info
+            String title = book.getTitle();
+            String author = book.getAuthor();
+            String image = book.getImage();
+            // remove book
+            books.removeBook(bookName);
+            // add book with new quantity
+            books.addBook(title, author, quantity, image);
         } else {
             UI.println("Book not Found");
         }
